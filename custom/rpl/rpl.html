@@ -1,0 +1,43 @@
+<div class="px-view" ng-controller="rplCtrl">
+    <!-- Directive px-view-header, apresenta o cabeçalho da view atual -->
+    <div px-fixed px-wrapper=".px-view" px-hfixed="true" px-vfixed="true" class="px-header">
+        <px-view-header px-show-hr="true"></px-view-header>
+    </div>
+    <div>
+        <!-- <p class="bg-info" px-fixed px-wrapper=".px-view" px-hfixed="true">Selecione uma CIA para iniciar sua consulta.</p> -->
+        <div px-fixed px-wrapper=".px-view" px-hfixed="true" layout="row" layout-align="space-between center">
+            <div layout="row" layout-align="start center" layout-padding flex="50">
+                <!--
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label for="filtroCia">CIA</label>
+                        <select id="filtroCia" ng-model="filtroCia" class="form-control" px-enter="getData()" ng-options="option.name for option in dataCIA.options track by option.id" placeholder="Selecione uma CIA" required ng-change="filtroCiaChange()"></select>
+                    </div>
+                </form>
+                -->
+                <div layout="row" layout-align="start center" layout-padding flex="60">
+                    <input id="filtroTudo" ng-model="filtroTudo" class="form-control" px-enter="getData()" placeholder="Digite palavras chaves para filtrar" required>
+                </div>
+                <div>
+                    <h4><span class="label label-primary">Exemplo: GLO SBSP SBRJ</span><h4>
+                </div>
+            </div>
+            <div class="btn-group" role="group">
+                <!--
+                <button type="button" class="btn btn-default" ng-click="getData()">
+                    <span ng-class="gridControl.working | refreshDataGrid"></span> Atualizar Listagem
+                </button>
+                -->
+                <button type="button" class="btn btn-default" ng-click="gitHub()">
+                    <span class="fa fa-github"></span> Código Fonte
+                </button>
+                <button type="button" class="btn btn-default" ng-click="vooFlex()">
+                    <span class="fa fa-link"></span> Versão Alternativa (Flex)
+                </button>
+            </div>
+        </div>
+    </div>
+    <px-data-grid control="gridControl" px-debug="false" px-init="gridInit()" px-fields="{{gridConfig.fields}}" px-check="false" px-ajax-url="custom/rpl/rpl.data.json" px-length-change="false" px-length-menu="[50]">
+    </px-data-grid>
+</div>
+</div>
