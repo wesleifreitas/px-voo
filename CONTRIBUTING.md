@@ -18,6 +18,11 @@
 * Adobe ColdFusion: [Instruções de instalação](https://github.com/wesleifreitas/px-project/blob/master/docs/guide-pt-BR/2.2-cf-install.md)
 * Bower: Para instalar o Bower(Gerenciador de pacotes) abra o prompt de comando ou Git Bash e execute:
 
+```shell
+npm install -g bower
+```
+Mais detalhes em [http://bower.io/](http://bower.io/)
+
 ## <a name="fork"></a> Fork px-voo
 
 Faça um fork (clicando no botão **Fork**) do repositório oficial [px-voo](https://github.com/wesleifreitas/px-voo)
