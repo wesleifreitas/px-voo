@@ -6,7 +6,7 @@ px-voo é um sitema modular baseado em componentes, tem como objetivo construir 
 
 ## Funções do software:
 
-- [x] RPL (CGNA)
+- [x] RPL (CGNA): O RPL é o Plano de Voo relativo a uma série de voos regulares, com base em horário de transporte (HOTRAN), que se realiza frequentemente, com idênticas características básicas, apresentado pelo explorador para retenção e uso repetitivo pelos órgãos ATS
 
 ## Contribuição
 
