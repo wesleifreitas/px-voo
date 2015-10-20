@@ -1,22 +1,8 @@
-(function() {
+define(['../controllers/module'], function(controllers) {
     'use strict';
 
-    // Filter refreshDataGrid
-    // Retorna o class adequado para o botão atualizar de acordo com o processamento do dataGrid
-    app.filter('refreshDataGrid', function() {
-        return function(working) {
-            // Verifica working da px-data-grid
-            // Class no botão Atualizar (Listagem)
-            if (working) {
-                return 'fa fa-refresh fa-spin';
-            } else {
-                return 'fa fa-refresh';
-            }
-        };
-    });
-
     // Controller
-    app.controller('rplCtrl', ['rplService', 'pxConfig', '$scope', '$element', '$attrs', '$mdToast', '$document', function(rplService, pxConfig, $scope, $element, $attrs, $mdToast, $document) {
+    controllers.controller('rplCtrl', ['rplService', 'pxConfig', '$scope', '$element', '$attrs', '$mdToast', '$document', function(rplService, pxConfig, $scope, $element, $attrs, $mdToast, $document) {
 
         // Variáveis gerais - Start
 
@@ -193,10 +179,4 @@
             $header.blur();
         };
     }]);
-
-    app.controller('ToastCtrl', function($scope, $mdToast) {
-        $scope.closeToast = function() {
-            $mdToast.hide();
-        };
-    });
-})();
+});

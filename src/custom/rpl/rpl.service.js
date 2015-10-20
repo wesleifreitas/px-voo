@@ -1,9 +1,7 @@
-(function() {
+define(['../services/module'], function(services) {
     'use strict';
 
-    angular
-        .module('app')
-        .factory('rplService', rplService);
+    services.factory('rplService', rplService);
 
     rplService.$inject = ['pxConfig', 'pxArrayUtil'];
 
@@ -132,4 +130,4 @@
             return arrayData.sort(pxArrayUtil.sortOn('name'));
         }
     }
-})();
+});
