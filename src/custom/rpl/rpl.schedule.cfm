@@ -51,22 +51,22 @@ cia_in: <cfdump var="#cia_in#">
 		<cfhttp url="#iUrl#"
 				result="cgnaResult">	
 																
-		<!--- Quantidade de linhas no cabe�alho --->
+		<!--- Quantidade de linhas no cabeçalho --->
 		<cfset cabecalho	= 5>
 		
 		<!--- Campos --->
-		<cfset VALIDO_DESDE 	= "">
-		<cfset VALIDO_ATE 		= "">
-		<cfset DIAS_OP_STQQSSD 	= "">
-		<cfset CIA 				= "">
-		<cfset IDENT_ANV 		= "">
-		<cfset TIPO_TURB 		= "">
-		<cfset DEP 				= "">
-		<cfset VEL 				= "">
-		<cfset FL 				= "">
-		<cfset ROTA 			= "">
-		<cfset DEST_EET 		= "">
-		<cfset OBSERVACOES 		= "">
+		<cfset VALIDO_DESDE = "">
+		<cfset VALIDO_ATE = "">
+		<cfset DIAS_OP_STQQSSD = "">
+		<cfset CIA = "">
+		<cfset IDENT_ANV = "">
+		<cfset TIPO_TURB = "">
+		<cfset DEP = "">
+		<cfset VEL = "">
+		<cfset FL = "">
+		<cfset ROTA = "">
+		<cfset DEST_EET = "">
+		<cfset OBSERVACOES = "">
 		
 		
 		<!--- Criar array por linha do texto lido --->
@@ -74,81 +74,65 @@ cia_in: <cfdump var="#cia_in#">
 		
 		<!--- <cfdump var="#array_texto#" label="array_texto"> --->
 		
-		<!--- índice do loop, in�cio na linha 12 --->
+		<!--- índice do loop, início na linha 12 --->
 		<cfset i = 12>
 
-
 		<cfquery datasource="px_project_sql">
-
 			DELETE FROM voo.cgna
 			WHERE CIA = '#listToArray(arrayIUrl[arrayLen(arrayIUrl)], "_")[2]#'
-
 		</cfquery>
 					
 		<!--- Enquanto i for menor ou igual a tamanho de array_texto --->
-		<cfloop condition="i LTE arraylen(array_texto)">
-			
-			<!--- Se a linha for come�o de cabe�alho --->
-			<cfif trim(mid(array_texto[i],1,4)) EQ "CIA">
-				
-				<cfset i = i+cabecalho>
-								
-			<cfelse>	
-			
-				<!--- Se a linha atual do loop for N�O for continua��o de outra linha 
-				Verificamos se o campo VALIDO_DESDE � vazio (se for ent�o � continua��o de linha)--->
+		<cfloop condition="i LTE arraylen(array_texto)">			
+			<!--- Se a linha for início de cabeçalho --->
+			<cfif trim(mid(array_texto[i],1,4)) EQ "CIA">			
+				<cfset i = i+cabecalho>								
+			<cfelse>				
+				<!--- Se a linha atual do loop NÃO for continuação de outra linha 
+				Verificar se o campo VALIDO_DESDE é vazio (se for então é continuação de linha)--->
 				<cfif trim(mid(array_texto[i],5,6)) NEQ "">
 				
-					<!--- Armazena valores no campos de acordo com sua posi��o no arquivo --->
-					<cfset VALIDO_DESDE 	= mid(array_texto[i],5,6)>
-					<cfset VALIDO_ATE 		= mid(array_texto[i],12,3)>
-					<cfset DIAS_OP_STQQSSD 	= mid(array_texto[i],19,7)>
-					<cfset CIA 				= mid(array_texto[i],27,3)>
-					<cfset IDENT_ANV 		= mid(array_texto[i],27,7)>
-					<cfset TIPO_TURB 		= mid(array_texto[i],35,6)>
-					<cfset DEP 				= mid(array_texto[i],42,4)>									
-					<cfset DEP_TIME 		= mid(array_texto[i],46,4)>
-					<cfset EET 				= mid(array_texto[i],101,4)>																		
-					<cfset VEL 				= mid(array_texto[i],51,5)>
-					<cfset FL 				= mid(array_texto[i],57,3)>
-					<cfset ROTA 			= mid(array_texto[i],61,36)>
-					<cfset ARR 				= mid(array_texto[i],97,4)>
-					<cfset DEST_EET 		= mid(array_texto[i],97,8)>
-					<cfset OBSERVACOES 		= mid(array_texto[i],106,28)>
-					
-						
-					<!--- Se a pr�xima linha for continua��o da linha atual 
-					Verifica se o campo VALIDO_DESDE da pr�xima linha � vazio (se for ent�o � continua��o da linha atual)--->
-					<cfif (i+1)LTE arrayLen(array_texto) AND trim(mid(array_texto[i+1],5,6)) EQ "">
-						
-						<!--- Vari�vel para complementar do valor do campo caso tenha continua��o na pr�xima linha --->	
+					<!--- Armazena valores no campos de acordo com sua posição no arquivo --->
+					<cfset VALIDO_DESDE = mid(array_texto[i],5,6)>
+					<cfset VALIDO_ATE = mid(array_texto[i],12,3)>
+					<cfset DIAS_OP_STQQSSD = mid(array_texto[i],19,7)>
+					<cfset CIA 	= mid(array_texto[i],27,3)>
+					<cfset IDENT_ANV = mid(array_texto[i],27,7)>
+					<cfset TIPO_TURB = mid(array_texto[i],35,6)>
+					<cfset DEP = mid(array_texto[i],42,4)>
+					<cfset DEP_TIME = mid(array_texto[i],46,4)>
+					<cfset EET = mid(array_texto[i],101,4)>
+					<cfset VEL = mid(array_texto[i],51,5)>
+					<cfset FL = mid(array_texto[i],57,3)>
+					<cfset ROTA = mid(array_texto[i],61,36)>
+					<cfset ARR 	= mid(array_texto[i],97,4)>
+					<cfset DEST_EET = mid(array_texto[i],97,8)>
+					<cfset OBSERVACOES = mid(array_texto[i],106,28)>
+										
+					<!--- Se a próxima linha for continuação da linha atual 
+					Verifica se o campo VALIDO_DESDE da práxima linha é vazio (se for então é continuação da linha atual)--->
+					<cfif (i+1)LTE arrayLen(array_texto) AND trim(mid(array_texto[i+1],5,6)) EQ "">						
+						<!--- Variável para complementar do valor do campo caso tenha continuação na próxima linha --->	
 						<cfset obscomplemento  = "">
 						<cfset rotacomplemento = "">
 						
-						<cfloop from="#i+1#" to="#arraylen(array_texto)#" index="j">
-							
-							<!--- Armazena o valor da continua��o do campo --->
+						<cfloop from="#i+1#" to="#arraylen(array_texto)#" index="j">							
+							<!--- Armazena o valor da continuação do campo --->
 							<cfset obscomplemento = obscomplemento&" "&mid(array_texto[j],106,28)>
 							<cfset rotacomplemento = rotacomplemento&" "&mid(array_texto[j],61,36)>
 
-						
-							<!--- Se a pr�xima linha N�O for continua��o da linha em quest�o --->
-							<cfif (j+1) LTE arraylen(array_texto) AND trim(mid(array_texto[j+1],5,6)) NEQ "">
-								
-								<!--- Concatena o valor de campo (linha atual+demais linhas de continua��o) --->
+							<!--- Se a próxima linha NãO for continuação da linha em questão --->
+							<cfif (j+1) LTE arraylen(array_texto) AND trim(mid(array_texto[j+1],5,6)) NEQ "">								
+								<!--- Concatena o valor de campo (linha atual+demais linhas de continuação) --->
 								<cfset OBSERVACOES 	= trim(OBSERVACOES)&" "&trim(obscomplemento)>
 								<cfset ROTA = trim(ROTA)&" "&trim(rotacomplemento)>
 
-								<cfbreak><!--- Cancela o loop de complemento --->
-							
-							</cfif>
-						
-						</cfloop>
-					
+								<cfbreak><!--- Cancela o loop de complemento --->							
+							</cfif>						
+						</cfloop>					
 					</cfif>
 											
-					<cfquery datasource="px_project_sql">
-						
+					<cfquery datasource="px_project_sql">						
 						INSERT INTO 
 						  voo.cgna
 						(
@@ -185,21 +169,15 @@ cia_in: <cfdump var="#cia_in#">
 						  <cfqueryparam cfsqltype="cf_sql_varchar" value="#DEST_EET#">,
 						  <cfqueryparam cfsqltype="cf_sql_varchar" value="#OBSERVACOES#">
 						);
-					</cfquery>
-				
+					</cfquery>				
 				</cfif>
 							
-				<cfset i = i+1>
-				
-			</cfif>		
-		
-		</cfloop>
-				
+				<cfset i = i+1>				
+			</cfif>				
+		</cfloop>			
 	</cfloop>
 
-
 <!--- ARQUIVO JSON - START --->
-
 <cfquery name="qQuery" datasource="px_project_sql">
 	SELECT
 		--TOP 5
@@ -221,5 +199,4 @@ cia_in: <cfdump var="#cia_in#">
 
 	<cffile action="write" file="#variables.file#" output="#variables.output#">	
 </cfif>
-
 <!--- ARQUIVO JSON - END --->
