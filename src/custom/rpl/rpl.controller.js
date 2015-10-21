@@ -2,7 +2,13 @@ define(['../controllers/module'], function(controllers) {
     'use strict';
 
     // Controller
-    controllers.controller('rplCtrl', ['rplService', 'pxConfig', '$scope', '$element', '$attrs', '$mdToast', '$document', function(rplService, pxConfig, $scope, $element, $attrs, $mdToast, $document) {
+    controllers.controller('rplCtrl', ['rplService', 'pxConfig', 'pxUtil', '$scope', '$element', '$attrs', '$mdToast', '$document', function(rplService, pxConfig, pxUtil, $scope, $element, $attrs, $mdToast, $document) {
+
+        // Acesso via browser mobile
+        if(pxUtil.isMobile()){
+            document.getElementById("btnVersaoFlex").style.display = "none";
+            document.getElementById("btnCodigoFonte").style.display = "none";
+        }
 
         // Variáveis gerais - Start
 
