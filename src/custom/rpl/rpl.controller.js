@@ -3,13 +3,7 @@ define(['../controllers/module'], function(controllers) {
 
     // Controller
     controllers.controller('rplCtrl', ['rplService', 'pxConfig', 'pxUtil', '$scope', '$element', '$attrs', '$mdToast', '$document', function(rplService, pxConfig, pxUtil, $scope, $element, $attrs, $mdToast, $document) {
-
-        // Acesso via browser mobile
-        if(pxUtil.isMobile()){
-            document.getElementById("btnVersaoFlex").style.display = "none";
-            document.getElementById("btnCodigoFonte").style.display = "none";
-        }
-
+        
         // Variáveis gerais - Start
 
         $scope.dataCIA = {
@@ -32,19 +26,19 @@ define(['../controllers/module'], function(controllers) {
          * Exemplo: <px-data-grid control="gridControl">
          * @type {Object}
          */
-        $scope.gridControl = {};
+        $scope.dgRplControl = {};
 
         /**
          * Inicializa listagem
          * @return {void}
          */
-        $scope.gridInit = function() {
+        $scope.dgRplInit = function() {
             /**
              * Configurações da listagem
              * - fields: Colunas da listagem
              * @type {object}
              */
-            $scope.gridConfig = {
+            $scope.dgRplConfig = {
                 fields: [{
                     title: 'VALIDO_DESDE',
                     field: 'VALIDO_DESDE',
@@ -122,7 +116,7 @@ define(['../controllers/module'], function(controllers) {
         $scope.getData = function() {
             //Recuperar dados para a listagem        
             if ($scope.filtroCia) {
-                $scope.gridControl.getData();
+                $scope.dgRplControl.getData();
             } else {
                 $scope.toast();
             }
@@ -163,9 +157,9 @@ define(['../controllers/module'], function(controllers) {
          * Filtrar registros carregados
          * @return {void}
          */
-        $('#filtroTudo').keyup(function(event) {
-            // Filtra registros carregados
-            $scope.gridControl.table.search($(this).val()).draw();
+        $('#filtroTudo').keyup(function(event) {          
+            // Filtrar registros carregados
+            $scope.dgRplControl.table.search($(this).val()).draw();
         });
 
         /**

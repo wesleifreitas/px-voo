@@ -6,7 +6,7 @@
     <div>
         <!-- <p class="bg-info" px-fixed px-wrapper=".px-view" px-hfixed="true">Selecione uma CIA para iniciar sua consulta.</p> -->
         <div px-fixed px-wrapper=".px-view" px-hfixed="true" layout="row" layout-align="space-between center" layout-wrap>
-            <div layout="row" layout-align="start center" layout-padding flex="50">
+            <div layout="row" layout-align="start center" layout-padding flex="100">
                 <!--
                 <form class="form-inline">
                     <div class="form-group">
@@ -15,11 +15,11 @@
                     </div>
                 </form>
                 -->
-                <div layout="row" layout-align="start center" layout-padding flex="100">
-                    <input id="filtroTudo" ng-model="filtroTudo" class="form-control" px-enter="getData()" placeholder="Filtros" title="Digite palavras chaves para filtra" required>
+                <div layout="row" layout-align="start center" layout-padding flex="60">
+                    <input id="filtroTudo" ng-model="filtroTudo" class="form-control" px-enter="getData()" placeholder="Filtros" title="Digite palavras chaves para filtrar" required>
                 </div>
                 <div>
-                    <h4><span class="label label-primary">Ex.: GLO SBSP SBRJ</span><h4>
+                    <h4><span class="label label-primary">Ex.: GLO SBSP SBRJ</span></h4>
                 </div>
             </div>
             <div class="btn-group" role="group">
@@ -28,16 +28,15 @@
                     <span ng-class="gridControl.working | refreshDataGrid"></span> Atualizar Listagem
                 </button>
                 -->
-                <button id="btnCodigoFonte" type="button" class="btn btn-default" ng-click="gitHub()">
+                <button hide-sm type="button" class="btn btn-default" ng-click="gitHub()">
                     <span class="fa fa-github"></span> Código Fonte
                 </button>
-                <button id="btnVersaoFlex" type="button" class="btn btn-default" ng-click="vooFlex()">
+                <button hide-sm type="button" class="btn btn-default" ng-click="vooFlex()">
                     <span class="fa fa-link"></span> Versão Alternativa (Flex)
                 </button>
             </div>
         </div>
     </div>
-    <px-data-grid control="gridControl" px-debug="false" px-init="gridInit()" px-fields="{{gridConfig.fields}}" px-check="false" px-ajax-url="custom/rpl/rpl.data.json" px-length-change="false" px-length-menu="[50]">
+    <px-data-grid id="dgRpl" px-control="dgRplControl" px-debug="false" px-init="dgRplInit()" px-config="{{dgRplConfig}}" px-check="false" px-ajax-url="custom/rpl/rpl.data.json" px-length-change="false" px-length-menu="[50]">
     </px-data-grid>
-</div>
 </div>

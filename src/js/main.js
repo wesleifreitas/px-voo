@@ -15,11 +15,11 @@ require.config({
         'dataTables': '../lib/datatables/media/js/jquery.dataTables.min',        
         'moment': '../lib/moment/min/moment-with-locales.min',
         'numeral': '../lib/numeral/min/numeral.min',
-        'numeral-languages': '../lib/numeral/min/languages.min',
+        'numeral-languages': '../lib/numeral/min/languages.min',        
+        'jstree': '../lib/jstree/dist/jstree.min',
+        'metro': '../lib/px-project/dist/system/core/external/metro',
+        'docs': '../lib/px-project/dist/system/core/external/docs',        
         'px-config': 'px-config',
-        'metro': '../lib/px-project/src/system/core/external/metro.min',
-        'docs': '../lib/px-project/src/system/core/external/docs',
-        'px-util': '../lib/px-project/src/system/utils/js/px-util'
     },
     shim: {
         'angular': {
@@ -53,13 +53,16 @@ require.config({
             deps: ['angular']
         },
         'metro': {
-            deps: ['jquery', 'jquery-ui']
+            deps: ['jquery', 'jquery-ui', 'docs']
         },
         'docs': {
             deps: ['jquery']
         },
         'numeral-languages': {
             deps: ['numeral']
+        },
+        'jstree': {
+            deps: ['jquery']
         }
     }
 });
