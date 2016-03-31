@@ -40,15 +40,15 @@ define(['../controllers/module'], function(controllers) {
              */
             $scope.dgRplConfig = {
                 fields: [{
-                    title: 'VALIDO_DESDE',
+                    title: 'VALIDO DESDE',
                     field: 'VALIDO_DESDE',
                     type: 'string'
                 }, {
-                    title: 'VALIDO_ATE',
+                    title: 'VALIDO ATE',
                     field: 'VALIDO_ATE',
                     type: 'string'
                 }, {
-                    title: 'DIAS_OP_STQQSSD',
+                    title: 'DIAS OP STQQSSD',
                     field: 'DIAS_OP_STQQSSD',
                     type: 'string'
                 }, {
@@ -62,7 +62,7 @@ define(['../controllers/module'], function(controllers) {
                         selectedItem: 'id'
                     }
                 }, {
-                    title: 'IDENT_ANV',
+                    title: 'IDENT ANV',
                     field: 'IDENT_ANV',
                     type: 'string'
                 }, {
@@ -98,7 +98,7 @@ define(['../controllers/module'], function(controllers) {
                     field: 'ROTA',
                     type: 'string'
                 }, {
-                    title: 'DEST_EET',
+                    title: 'DEST EET',
                     field: 'DEST_EET',
                     type: 'string'
                 }, {
