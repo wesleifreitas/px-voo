@@ -2,7 +2,7 @@
 Schedule
 --->
 
-<cfinclude template="../../../px-project/src/system/utils/cf/px-util.cfm">
+<cfinclude template="../../lib/px-project/dist/system/utils/cf/px-util.cfm">
 
 <cfset arguments.companhiasSelecionadas = arrayNew(1)>
 
