@@ -1,0 +1,96 @@
+<div layout="column" ng-cloak flex="100" class="rpl" ng-init="vm.init()">
+    <div layout="column" layout-align="start stretch" class="content">
+
+        <md-toolbar class="md-table-toolbar md-default" ng-hide="vm.rpl.selected.length">
+            <div class="md-toolbar-tools">
+                <span>RPL</span>
+
+                <div layout="row" flex class="filter" ng-show="true">
+                    <md-icon class="material-icons">search</md-icon>
+                    <form flex="" name="filter.form" class="ng-pristine ng-valid flex">
+                        <input type="text" ng-model="vm.search" placeholder="Pesquisar">
+                    </form>
+                </div>
+
+                <span flex></span>
+                <md-button class="md-primary" ng-click="vm.getData({reset: true})">
+                    <md-icon>refresh</md-icon>
+                    Atualizar
+                </md-button>
+            </div>
+        </md-toolbar>
+
+
+        <md-toolbar class="md-accent md-hue-1" ng-show="vm.rpl.selected.length">
+            <div class="md-toolbar-tools">
+                <span>{{vm.rpl.selected.length}} {{vm.rpl.selected.length > 1 ? 'linhas selecionadas' : 'linha selecionada'}} </span>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="vm.remove($event)">
+                    <md-icon>delete</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-table-container layout="column" class="fix-head">
+            <div class="overflow">
+                <table md-table md-row-select="false" multiple="true" ng-model="vm.rpl.selected" md-progress="vm.rpl.promise">
+                    <thead fix-head md-head md-order="vm.rpl.order">
+                        <tr md-row>
+                            <th md-column></th>
+                            <th md-column md-order-by=""><span>VÁLIDO DESDE</span></th>
+                            <th md-column><span>VÁLIDO ATE</span></th>
+                            <th md-column><span>DIAS OP STQQSSD</span></th>
+                            <th md-column>
+                                <span>CIA</span>
+                                <!--
+                                <md-input-container flex class="filter">
+                                    <input type="text" placeholder="CIA" class="no-focus" ng-class="{'underline': vm.search.cia.length > 0}" ng-model="vm.search.cia">
+                                </md-input-container>
+                                -->
+                            </th>
+                            <th md-column>IDENT ANV</th>
+                            <th md-column>TIPO TURB</th>
+                            <th md-column>DEP</th>
+                            <th md-column>VEL</th>
+                            <th md-column>ARR</th>
+                            <th md-column>DEP TIME</th>
+                            <th md-column>EET</th>
+                            <th md-column>FL</th>
+                            <th md-column>ROTA</th>
+                            <th md-column>DEST EET</th>
+                            <th md-column>OBSERVACOES</th>
+                        </tr>
+                    </thead>
+                    <tbody md-body>
+                        <tr md-row md-select="item" md-select-id="_ID" ng-repeat="item in vm.rpl.data | orderBy: vm.rpl.order | limitTo: vm.rpl.limit: (vm.rpl.page - 1) * vm.rpl.limit | filter:vm.search">
+                            <td md-cell>
+                                <md-button class="md-icon-button md-primary" ng-click="vm.update(item._ID)">
+                                    <md-icon>info_outline</md-icon>
+                                </md-button>
+                            </td>
+                            <td md-cell nowrap>{{item.VALIDO_DESDE}}</td>
+                            <td md-cell nowrap>{{item.VALIDO_ATE}}</td>
+                            <td md-cell nowrap>{{item.DIAS_OP_STQQSSD}}</td>
+                            <td md-cell nowrap>{{item.CIA}}</td>
+                            <td md-cell nowrap>{{item.IDENT_ANV}}</td>
+                            <td md-cell nowrap>{{item.TIPO_TURB}}</td>
+                            <td md-cell nowrap>{{item.DEP}}</td>
+                            <td md-cell nowrap>{{item.VEL}}</td>
+                            <td md-cell nowrap>{{item.ARR}}</td>
+                            <td md-cell nowrap>{{item.DEP_TIME}}</td>
+                            <td md-cell nowrap>{{item.EET}}</td>
+                            <td md-cell nowrap>{{item.FL}}</td>
+                            <td md-cell nowrap>{{item.ROTA}}</td>
+                            <td md-cell nowrap>{{item.DEST_EET}}</td>
+                            <td md-cell nowrap>{{item.OBSERVACOES}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </md-table-container>
+
+        <div>
+            <md-table-pagination md-label="{page: 'Página:', rowsPerPage: 'Qtd. por página:', of: 'de'}" md-limit="vm.rpl.limit" md-page="vm.rpl.page" md-total="{{vm.rpl.total}}" md-page-select></md-table-pagination>
+        </div>
+    </div>
+</div>
