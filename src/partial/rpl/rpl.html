@@ -5,7 +5,7 @@
             <div class="md-toolbar-tools">
                 <span>RPL</span>
 
-                <div layout="row" flex class="filter" ng-show="true">
+                <div layout="row" flex class="filter" ng-show="false">
                     <md-icon class="material-icons">search</md-icon>
                     <form flex="" name="filter.form" class="ng-pristine ng-valid flex">
                         <input type="text" ng-model="vm.search" placeholder="Pesquisar">
@@ -62,7 +62,7 @@
                         </tr>
                     </thead>
                     <tbody md-body>
-                        <tr md-row md-select="item" md-select-id="_ID" ng-repeat="item in vm.rpl.data | orderBy: vm.rpl.order | limitTo: vm.rpl.limit: (vm.rpl.page - 1) * vm.rpl.limit | filter:vm.search">
+                        <tr md-row md-select="item" md-select-id="_ID" ng-repeat="item in vm.rpl.data | orderBy: vm.rpl.order  | filter:vm.search | limitTo: vm.rpl.limit: (vm.rpl.page - 1) * vm.rpl.limit">
                             <td md-cell>
                                 <md-button class="md-icon-button md-primary" ng-click="vm.update(item._ID)">
                                     <md-icon>info_outline</md-icon>
