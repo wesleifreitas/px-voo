@@ -27,7 +27,7 @@
             filter.page = 1;
             filter.limit = 1;
 
-            grupoService.get(filter, false)
+            /*grupoService.get(filter, false)
                 .then(function success(response) {
                     if (response.query.length > 0) {
                         $rootScope.globals.currentUser.grupoSelected = {
@@ -40,7 +40,7 @@
                     }
                 }, function error(response) {
                     console.error('error', response);
-                });
+                });*/
         }
 
         function navBarClick(event) {

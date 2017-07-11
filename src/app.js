@@ -117,34 +117,11 @@
 
     function run($rootScope, $state, $cookies, $http) {
 
-        // keep user logged in after page refresh
-        $rootScope.globals = $cookies.getObject('globals') || {};
-        if ($rootScope.globals.currentUser) {
-            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
-        }
-
-        $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
-
-            var filterLast = JSON.parse(localStorage.getItem('filter')) || {};
-
-            if (!filterLast[toState.url.split('/')[1]]) {
-                localStorage.removeItem('filter');
+        $rootScope.globals = {
+            currentUser: {
+                username: '',
+                userid: 1
             }
-
-            if (toState.name === 'login' || toState.name === 'register') {
-                return;
-            } else {
-                var loggedIn = $rootScope.globals.currentUser;
-                if (!loggedIn) {
-                    $state.go('login');
-                    localStorage.removeItem('filter');
-                    event.preventDefault();
-                } else if (toState.name === 'home') {
-                    // redirecionar o primeiro state
-                    $state.go('rpl');
-                    event.preventDefault();
-                }
-            }
-        });
+        };
     }
 })();

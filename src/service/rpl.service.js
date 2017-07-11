@@ -14,10 +14,12 @@
 
         return service;
 
+        // test!
         function get(params) {
 
             var req = $http({
-                    url: 'partial/rpl/rpl.data.json',
+                    //url: 'partial/rpl/rpl.data.json',
+                    url: 'http://voo.pxproject.com.br/partial/rpl/rpl.data.json',
                     method: 'GET',
                     headers: {
                         'Authorization': '',
